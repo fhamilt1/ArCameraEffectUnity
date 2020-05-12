@@ -24,20 +24,24 @@ public class MouthOverlayManager : MonoBehaviour
 
     public RecordManager recordManager;
     private bool recording = false;
-    public UnityEngine.UI.Text recordText;
+    public UnityEngine.UI.Image recordImage;
+    public UnityEngine.UI.Image saveImage;
+
 
     public void ToggleRecAndSave()
     {
         if (recording)
         {
             recordManager.StopRecord();
-            recordText.text = "Record";
+            saveImage.gameObject.SetActive(false);
+            recordImage.gameObject.SetActive(true);
             recording = false;
         }
         else
         {
             recordManager.StartRecord();
-            recordText.text = "Save";
+            saveImage.gameObject.SetActive(true);
+            recordImage.gameObject.SetActive(false);
             recording = true;
         }
 
@@ -47,6 +51,8 @@ public class MouthOverlayManager : MonoBehaviour
     public void Start()
     {
         StartCoroutine(DelayStart());
+        saveImage.gameObject.SetActive(false);
+        recordImage.gameObject.SetActive(true);
     }
 
     IEnumerator DelayStart()
