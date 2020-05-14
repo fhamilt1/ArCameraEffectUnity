@@ -8,7 +8,7 @@
     {
         public MeshFilter meshFilter;
         [HideInInspector] public List<UvPointTracker> pointsToTrack = new List<UvPointTracker>();
-        public float allowableDistanceSquared = .001f;
+        private float allowableDistanceSquared = 0.0001f;
 
         void Update()
         {

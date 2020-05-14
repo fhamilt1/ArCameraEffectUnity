@@ -1,49 +1,52 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class MouthOverlayMesh : MouthOverlayBase
+﻿namespace MouthOverlaySystem
 {
-    public GameObject[] mouthMeshArray;
+    using System.Collections;
+    using System.Collections.Generic;
+    using UnityEngine;
 
-    public override void Activate()
+    public class MouthOverlayMesh : MouthOverlayBase
     {
-        this.gameObject.SetActive(true);
-        
-        mouthOverlayManager.renderer_faceMesh.enabled = false;
-        foreach(GameObject mouthMesh in mouthMeshArray)
+        [SerializeField] private GameObject[] mouthMeshArray = null;
+
+        public override void Activate()
         {
-            mouthMesh.transform.SetParent(mouthOverlayManager.mouthTrackingPoint.transform);
-            mouthMesh.transform.localPosition = Vector3.zero;
-            mouthMesh.transform.localRotation = Quaternion.identity;
-            mouthMesh.SetActive(true);
+            this.gameObject.SetActive(true);
+
+            mouthOverlayManager.renderer_faceMesh.enabled = false;
+            foreach (GameObject mouthMesh in mouthMeshArray)
+            {
+                mouthMesh.transform.SetParent(mouthOverlayManager.mouthTrackingPoint.transform);
+                mouthMesh.transform.localPosition = Vector3.zero;
+                mouthMesh.transform.localRotation = Quaternion.identity;
+                mouthMesh.SetActive(true);
+            }
         }
-    }
 
-    public override void Deactivate()
-    {
-        this.gameObject.SetActive(false);
-        
-        foreach (GameObject mouthMesh in mouthMeshArray)
+        public override void Deactivate()
         {
-            mouthMesh.transform.SetParent(this.transform);
-            mouthMesh.SetActive(false);
+            this.gameObject.SetActive(false);
+
+            foreach (GameObject mouthMesh in mouthMeshArray)
+            {
+                mouthMesh.transform.SetParent(this.transform);
+                mouthMesh.SetActive(false);
+            }
         }
-    }
 
-    public override void Hide()
-    {
-        foreach (GameObject mouthMesh in mouthMeshArray)
+        public override void Hide()
         {
-            mouthMesh.SetActive(false);
+            foreach (GameObject mouthMesh in mouthMeshArray)
+            {
+                mouthMesh.SetActive(false);
+            }
         }
-    }
 
-    public override void Show()
-    {
-        foreach (GameObject mouthMesh in mouthMeshArray)
+        public override void Show()
         {
-            mouthMesh.SetActive(true);
+            foreach (GameObject mouthMesh in mouthMeshArray)
+            {
+                mouthMesh.SetActive(true);
+            }
         }
     }
 }

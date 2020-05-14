@@ -1,30 +1,32 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class MouthOverlayMaterial : MouthOverlayBase
+﻿namespace MouthOverlaySystem
 {
-    public Material faceMat;
+    using System.Collections;
+    using System.Collections.Generic;
+    using UnityEngine;
 
-    public override void Activate()
+    public class MouthOverlayMaterial : MouthOverlayBase
     {
-        mouthOverlayManager.renderer_faceMesh.enabled = true;
-        mouthOverlayManager.renderer_faceMesh.material = faceMat;
-    }
+        [SerializeField] private Material faceMat = null;
 
-    public override void Deactivate()
-    {
-        mouthOverlayManager.renderer_faceMesh.enabled = false;
+        public override void Activate()
+        {
+            mouthOverlayManager.renderer_faceMesh.enabled = true;
+            mouthOverlayManager.renderer_faceMesh.material = faceMat;
+        }
 
-    }
+        public override void Deactivate()
+        {
+            mouthOverlayManager.renderer_faceMesh.enabled = false;
+        }
 
-    public override void Hide()
-    {
-        mouthOverlayManager.renderer_faceMesh.enabled = false;
-    }
+        public override void Hide()
+        {
+            mouthOverlayManager.renderer_faceMesh.enabled = false;
+        }
 
-    public override void Show()
-    {
-        mouthOverlayManager.renderer_faceMesh.enabled = true;
+        public override void Show()
+        {
+            mouthOverlayManager.renderer_faceMesh.enabled = true;
+        }
     }
 }

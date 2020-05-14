@@ -6,7 +6,7 @@
 
     public class UvPointTracker : MonoBehaviour
     {
-        UvPointTrackerManager uvPointTrackerManager;
+        private UvPointTrackerManager uvPointTrackerManager;
         public Vector2 uvPosition;
         [HideInInspector] public bool foundThisFrame = false;
 
